@@ -5,6 +5,16 @@
   background: rgba(255,255,255,0.03);
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover zoom effect */
+.movie-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  z-index: 10;
 }
 
 .movie-poster {
@@ -12,6 +22,12 @@
   height: 270px;
   object-fit: cover;
   display: block;
+  transition: transform 0.3s ease;
+}
+
+/* Optional: You can also add a separate hover effect just for the poster */
+.movie-card:hover .movie-poster {
+  transform: scale(1.02);
 }
 
 .poster-placeholder {
@@ -22,10 +38,12 @@
   justify-content:center;
   background:#333;
   color:#fff;
+  transition: transform 0.3s ease;
 }
 
 .movie-info {
   padding: 10px;
+  transition: transform 0.3s ease;
 }
 
 .movie-title {
@@ -38,14 +56,6 @@
   font-size: 12px;
   opacity: 0.8;
 }
-.movie-card {
-  position: relative;
-  transition: transform 0.3s ease;
-}
-
-.movie-card:hover {
-  transform: scale(1.05);
-}
 
 /* Heart position */
 .favorite-heart {
@@ -55,6 +65,13 @@
   font-size: 24px;
   cursor: pointer;
   user-select: none;
+  z-index: 5; /* Ensure heart stays above other content */
+  transition: transform 0.2s ease;
+}
+
+/* Optional: Add a slight scale to heart on hover */
+.favorite-heart:hover {
+  transform: scale(1.1);
 }
 
 /* Placeholder styling */

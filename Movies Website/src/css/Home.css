@@ -31,6 +31,12 @@
   justify-items: center;
 }
 
+/* Ensure grid items have proper stacking context */
+.movies-grid > * {
+  position: relative;
+  z-index: 1;
+}
+
 /* Dark / Light Mode classes */
 .dark-mode {
   background-color: #111;
