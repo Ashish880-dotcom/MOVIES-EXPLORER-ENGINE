@@ -9,6 +9,15 @@
   margin-bottom: 2rem;
   text-align: center;
   font-size: 2.5rem;
+}
+
+/* Light/Dark mode specific heading styles */
+.light-mode .favorites h2 {
+  color: #ff4500;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.dark-mode .favorites h2 {
   color: #fff;
   text-shadow: 2px 2px 4px rgba(243, 0, 0, 0.91);
 }
@@ -17,24 +26,46 @@
 .favorites-empty {
   text-align: center;
   padding: 4rem 2rem;
-  background-color: rgba(30, 30, 31, 0.925);
   border-radius: 12px;
   margin: 2rem auto;
   max-width: 600px;
+}
+
+/* Light/Dark mode empty state */
+.light-mode .favorites-empty {
+  background-color: rgba(240, 240, 240, 0.9);
+}
+
+.dark-mode .favorites-empty {
+  background-color: rgba(30, 30, 31, 0.925);
 }
 
 /* Empty state title */
 .favorites-empty h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
+}
+
+.light-mode .favorites-empty h2 {
+  color: #ff4500;
+}
+
+.dark-mode .favorites-empty h2 {
   color: #e50914;
 }
 
 /* Empty state message */
 .favorites-empty p {
-  color: #999;
   font-size: 1.2rem;
   line-height: 1.6;
+}
+
+.light-mode .favorites-empty p {
+  color: #666;
+}
+
+.dark-mode .favorites-empty p {
+  color: #999;
 }
 
 /* Smooth animation for movie cards */
@@ -53,4 +84,12 @@
   animation: fadeIn 0.3s ease-out forwards;
   position: relative;
   z-index: 1;
+}
+
+/* Add grid styling for favorites page */
+.favorites .movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 35px;
+  justify-items: center;
 }

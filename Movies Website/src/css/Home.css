@@ -18,6 +18,24 @@
   border-radius: 6px;
   border: 1px solid #ccc;
   outline: none;
+  background: #fff;
+  color: #111;
+}
+
+/* Light mode input styles */
+.light-mode .search-input,
+.light-mode .genre-select {
+  background: #fff;
+  color: #111;
+  border-color: #ccc;
+}
+
+/* Dark mode input styles */
+.dark-mode .search-input,
+.dark-mode .genre-select {
+  background: #333;
+  color: #fff;
+  border-color: #555;
 }
 
 .search-input:focus, .genre-select:focus {
@@ -27,11 +45,10 @@
 .movies-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
+  gap: 35px;
   justify-items: center;
 }
 
-/* Ensure grid items have proper stacking context */
 .movies-grid > * {
   position: relative;
   z-index: 1;
@@ -54,4 +71,15 @@
   margin-bottom: 20px;
   color: #ff4500;
   font-weight: bold;
+}
+
+/* Mode-specific heading colors */
+.light-mode .main-heading {
+  color: #ff4500;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.dark-mode .main-heading {
+  color: #ff4500;
+  text-shadow: 2px 2px 4px rgba(243, 0, 0, 0.91);
 }
