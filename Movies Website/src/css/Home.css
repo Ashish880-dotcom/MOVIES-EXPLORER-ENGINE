@@ -8,11 +8,19 @@
 .filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
   margin-bottom: 20px;
+  align-items: center;
 }
 
-.search-input, .genre-select {
+/* Search container with input and button */
+.search-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.search-input {
   padding: 8px 12px;
   font-size: 16px;
   border-radius: 6px;
@@ -20,6 +28,41 @@
   outline: none;
   background: #fff;
   color: #111;
+  min-width: 250px;
+}
+
+.search-btn {
+  padding: 8px 20px;
+  background: linear-gradient(135deg, #ff4500, #ff6b35);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+  background: linear-gradient(135deg, #ff6347, #ff4500);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 69, 0, 0.4);
+}
+
+.clear-search-btn {
+  padding: 8px 15px;
+  background: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.clear-search-btn:hover {
+  background: #5a6268;
+  transform: translateY(-2px);
 }
 
 /* Light mode input styles */
@@ -40,6 +83,16 @@
 
 .search-input:focus, .genre-select:focus {
   border-color: #ff4500;
+}
+
+.genre-select {
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  background: #fff;
+  color: #111;
 }
 
 .movies-grid {
@@ -68,18 +121,101 @@
 .main-heading {
   text-align: center;
   font-size: 36px;
-  margin-bottom: 20px;
-  color: #ff4500;
+  margin-bottom: 10px;
   font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* Mode-specific heading colors */
+.sub-heading {
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 30px;
+  font-style: italic;
+  line-height: 1.5;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Mode-specific heading colors - "Greatest hollywood movies of all time !!!" */
 .light-mode .main-heading {
-  color: #ff4500;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  color: #ff4500; /* Orange in light mode */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .dark-mode .main-heading {
-  color: #ff4500;
-  text-shadow: 2px 2px 4px rgba(243, 0, 0, 0.91);
+  color: #FFFFFF; /* White in dark mode */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Sub-heading colors */
+.light-mode .sub-heading {
+  color: #000000; /* Black in light mode */
+}
+
+.dark-mode .sub-heading {
+  color: #1E90FF; /* Blue in dark mode */
+}
+
+/* Search results info */
+.search-results-info {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.light-mode .search-results-info {
+  background-color: rgba(255, 69, 0, 0.1);
+  color: #333;
+}
+
+.dark-mode .search-results-info {
+  background-color: rgba(255, 69, 0, 0.2);
+  color: #fff;
+}
+
+.no-results {
+  color: #ff4444 !important;
+  font-weight: 600;
+}
+
+/* No movies found section */
+.no-movies-found {
+  text-align: center;
+  padding: 40px 20px;
+  margin: 20px 0;
+}
+
+.no-movies-found h3 {
+  color: #ff4444;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.no-movies-found p {
+  color: inherit;
+  opacity: 0.8;
+  font-size: 1.1rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-container {
+    flex-direction: column;
+  }
+  
+  .search-input {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .search-btn, .clear-search-btn {
+    width: 100%;
+  }
 }

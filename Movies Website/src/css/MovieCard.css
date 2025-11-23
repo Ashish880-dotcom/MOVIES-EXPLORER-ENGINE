@@ -23,12 +23,12 @@
   height: 270px;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease; /* Added for image zoom */
+  transition: transform 0.4s ease;
 }
 
 /* Individual image zoom on card hover */
 .movie-card:hover .movie-poster {
-  transform: scale(1.1); /* Image zooms slightly more than card */
+  transform: scale(1.1);
 }
 
 .poster-placeholder {
@@ -48,7 +48,6 @@
 
 .movie-info {
   padding: 10px;
-  /* Background will be handled by light/dark mode classes */
 }
 
 .movie-title {
@@ -94,12 +93,12 @@
 
 /* Light/Dark mode specific styles for movie info background */
 .light-mode .movie-info {
-  background: rgba(0, 0, 0, 0.1); /* Light background for dark text */
+  background: rgba(0, 0, 0, 0.1);
   color: #111;
 }
 
 .dark-mode .movie-info {
-  background: rgba(255, 255, 255, 0.1); /* Dark background for light text */
+  background: rgba(255, 255, 255, 0.1);
   color: #fff;
 }
 

@@ -4,22 +4,55 @@
   box-sizing: border-box;
 }
 
-/* Main heading */
-.favorites h2 {
+/* Favorites header with button */
+.favorites-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 2rem;
-  text-align: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Main heading */
+.favorites-header h2 {
+  margin: 0;
   font-size: 2.5rem;
 }
 
 /* Light/Dark mode specific heading styles */
-.light-mode .favorites h2 {
-  color: #ff4500;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+.light-mode .favorites-header h2 {
+  color: #000000; /* Black in light mode */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
-.dark-mode .favorites h2 {
-  color: #fff;
-  text-shadow: 2px 2px 4px rgba(243, 0, 0, 0.91);
+.dark-mode .favorites-header h2 {
+  color: #FFFACD; /* Light yellow in dark mode */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+/* Remove All Button */
+.remove-all-btn {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #ff4500, #e63946);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 69, 0, 0.4);
+}
+
+.remove-all-btn:hover {
+  background: linear-gradient(135deg, #e63946, #d00000);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 69, 0, 0.6);
+}
+
+.remove-all-btn:active {
+  transform: translateY(0);
 }
 
 /* Empty favorites container */
@@ -47,11 +80,11 @@
 }
 
 .light-mode .favorites-empty h2 {
-  color: #ff4500;
+  color: #FFD700;
 }
 
 .dark-mode .favorites-empty h2 {
-  color: #e50914;
+  color: #FFD700;
 }
 
 /* Empty state message */
@@ -92,4 +125,21 @@
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 35px;
   justify-items: center;
+}
+
+/* Responsive design for header */
+@media (max-width: 768px) {
+  .favorites-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .favorites-header h2 {
+    font-size: 2rem;
+  }
+  
+  .remove-all-btn {
+    width: 100%;
+    max-width: 250px;
+  }
 }

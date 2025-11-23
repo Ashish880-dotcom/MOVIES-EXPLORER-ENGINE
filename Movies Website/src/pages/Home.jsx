@@ -46,6 +46,7 @@ import bohemianRhapsodyPoster from "../assets/images/bohemian-rhapsody.jpg";
 function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [genre, setGenre] = useState("All");
+  const [searchPerformed, setSearchPerformed] = useState(false);
 
   const movies = [
     {
@@ -288,7 +289,7 @@ function Home() {
     },
     {
       id: 35,
-      title: "Zack Snyder’s Justice League",
+      title: "Zack Snyder's Justice League",
       genre: "Superhero/Action",
       release_date: "2021",
       poster: zackSnyderJusticeLeaguePoster,
@@ -330,6 +331,21 @@ function Home() {
     },
   ];
 
+  const handleSearch = () => {
+    setSearchPerformed(true);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  const clearSearch = () => {
+    setSearchQuery("");
+    setSearchPerformed(false);
+  };
+
   const filteredMovies = movies.filter((movie) => {
     const matchesSearch = movie.title
       .toLowerCase()
@@ -341,16 +357,29 @@ function Home() {
 
   return (
     <div className="home">
-      <h2 className="main-heading">Best Hollywood Movies</h2>
+      <h2 className="main-heading">Greatest hollywood movies of all time !!!</h2>
+      <p className="sub-heading">Discover the best of the best, highest rated greatest films of all time in the search bar and add to your favorites to view later</p>
 
       <div className="filters">
-        <input
-          type="text"
-          placeholder="Search movies..."
-          className="search-input"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="Search movies..."
+            className="search-input"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyPress={handleKeyPress}
+          />
+          <button className="search-btn" onClick={handleSearch}>
+            Search
+          </button>
+          {(searchQuery && searchPerformed) && (
+            <button className="clear-search-btn" onClick={clearSearch}>
+              Clear
+            </button>
+          )}
+        </div>
+        
         <select
           value={genre}
           onChange={(e) => setGenre(e.target.value)}
@@ -371,11 +400,34 @@ function Home() {
         </select>
       </div>
 
+      {/* Search Results Message */}
+      {searchPerformed && searchQuery && (
+        <div className="search-results-info">
+          {filteredMovies.length > 0 ? (
+            <p>
+              Found {filteredMovies.length} movie{filteredMovies.length !== 1 ? 's' : ''} matching "{searchQuery}"
+            </p>
+          ) : (
+            <p className="no-results">
+              There is no movies like "{searchQuery}"
+            </p>
+          )}
+        </div>
+      )}
+
       <div className="movies-grid">
         {filteredMovies.map((movie) => (
           <MovieCard movie={movie} key={movie.id} />
         ))}
       </div>
+
+      {/* Show message when no movies found after search */}
+      {searchPerformed && searchQuery && filteredMovies.length === 0 && (
+        <div className="no-movies-found">
+          <h3>No movies found</h3>
+          <p>Try searching with different keywords or browse all movies by clearing the search.</p>
+        </div>
+      )}
     </div>
   );
 }

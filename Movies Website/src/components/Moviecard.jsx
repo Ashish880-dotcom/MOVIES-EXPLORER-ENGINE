@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "../css/MovieCard.css";
 
-function MovieCard({ movie }) {
+function MovieCard({ movie, onRemove }) {
   const { title, poster, release_date } = movie || {};
   const [isFavorite, setIsFavorite] = useState(false);
 
-  // Check if movie already in favorites on load
+  // Check if movie already in favorites on load and when favorites change
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("favorites")) || [];
     setIsFavorite(saved.some(m => m.title === title));
@@ -16,7 +16,12 @@ function MovieCard({ movie }) {
 
     if (isFavorite) {
       saved = saved.filter(m => m.title !== title);
-      alert("Removed from favorites");
+      // Call the onRemove callback if provided (for instant removal in favorites page)
+      if (onRemove) {
+        onRemove();
+      } else {
+        alert("Removed from favorites");
+      }
     } else {
       saved.push(movie);
       alert("Added to favorites");
